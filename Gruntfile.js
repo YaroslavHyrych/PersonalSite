@@ -1,7 +1,25 @@
 module.exports = function(grunt) {
     grunt.initConfig({
+        imagemin: {
+            dynamic: {
+                files: [{
+                    expand: true,
+                    cwd: 'resources/images/',
+                    src: ['*.{png,jpg,JPG,gif}'],
+                    dest: 'webapp/img'
+                }]
+            }
+        },
         sass: {
-            dist: {
+            debug: {
+                options: {
+                    style: 'nested'
+                },
+                files: {
+                    'webapp/css/style.css' : 'resources/stylesheet/main.sass'
+                }
+            },
+            release: {
                 options: {
                     style: 'compressed'
                 },
@@ -26,16 +44,23 @@ module.exports = function(grunt) {
             options: {
                 livereload: true
             },
-            script: {
-                files: ['resources/javascript/*.js'],
-                //tasks: ['concat'],
+            //script: {
+            //    files: ['resources/javascript/*.js'],
+            //    tasks: [''],
+            //    options: {
+            //        spawn: false
+            //    }
+            //},
+            css: {
+                files: 'resources/stylesheet/**/*.sass',
+                tasks: ['sass:debug'],
                 options: {
                     spawn: false
                 }
             },
-            css: {
-                files: 'resources/stylesheet/**/*.sass',
-                tasks: ['sass'],
+            jade: {
+                files: 'resources/page/*.jade',
+                tasks: ['jade'],
                 options: {
                     spawn: false
                 }
@@ -46,6 +71,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-    grunt.registerTask('default', ['sass', 'jade']);
+    grunt.registerTask('default', ['sass', 'jade', 'imagemin']);
 };

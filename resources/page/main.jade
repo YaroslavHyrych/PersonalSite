@@ -2,15 +2,74 @@ doctype html
 html(lang="en")
     head
         title My site
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js")
+        script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
         link(href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
-    body
-        header.container
-            div.row
-                nav.col-md-8 Programs
-                nav.col-md-8 Menu
-            div.row
-                div.col-md-12.text-center
-                    div
-                        | YAROSLAV HYRYCH
-                        div.text-right Web Developer
-                            //http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_theme_me_complete&stacked=h
+        //link(href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100&subset=latin,cyrillic-ext,cyrillic", rel="stylesheet")
+        link(href="css/style.css", rel="stylesheet")
+    body(data-spy="scroll", data-target=".navbar", data-offset="50")
+        article.container-fluid
+            header.row
+                nav.col-md-6.navbar
+                    ul.nav.navbar-nav
+                        li
+                            a MY PROJECTS
+                        li
+                            a CONTACTS
+                nav.col-md-6.navbar
+                    ul.nav.navbar-nav
+                        li
+                            a(href="#projects") MY PROJECTS
+                        li
+                            a CONTACTS
+
+            section.row.text-center
+                h1 YAROSLAV HYRYCH
+                    //div Web Developer
+
+        article#projects
+            header.row.text-center
+                h1
+                    | MY PROJECTS
+
+            section
+                article(style="background-color: #0fc1a1")
+                    div.container
+                        div.row
+                            aside.col-md-4.text-center
+                                img(src="img/project_1.png")
+                            div.col-md-8
+                                header
+                                    | Before you start
+                                p
+                                    | A landing page is designed to accomplish a specific conversion goal. Sometimes people use their home page as a landing page, but this is generally a bad idea your home page is an introduction to your business and your products or services, whereas a landing page is targeting a specific campaign. It must capture your visitors’ attention and persuade them to convert.
+                                nav.text-right
+                                    a(href="#").details VIEW DETAILS
+
+                article(style="background-color: white")
+                    div.container
+                        div.row
+                            aside.col-md-4.text-center
+                                img(src="img/project_1.png")
+                            div.col-md-8
+                                header
+                                    | Before you start
+                                p
+                                    | A landing page is designed to accomplish a specific conversion goal. Sometimes people use their home page as a landing page, but this is generally a bad idea your home page is an introduction to your business and your products or services, whereas a landing page is targeting a specific campaign. It must capture your visitors’ attention and persuade them to convert.
+                                nav.text-right
+                                    a(href="#").details VIEW DETAILS
+
+                article(style="background-color: #2772db")
+                    div.container
+                        div.row
+                            aside.col-md-4.text-center
+                                img(src="img/project_1.png")
+                            div.col-md-8
+                                header
+                                    | Before you start
+                                p
+                                    | A landing page is designed to accomplish a specific conversion goal. Sometimes people use their home page as a landing page, but this is generally a bad idea your home page is an introduction to your business and your products or services, whereas a landing page is targeting a specific campaign. It must capture your visitors’ attention and persuade them to convert.
+                                nav.text-right
+                                    a(href="#").details VIEW DETAILS

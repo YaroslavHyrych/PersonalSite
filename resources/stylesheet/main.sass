@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100&subset=latin,cyrillic-ext,cyrillic')
+@import 'vendor/bootstrap'
+
+body
+  font-family: Roboto, Helvetica, Arial, sans-serif
+
+body > article:first-child
+  background: url(../img/top.jpg) 100% 100%
+  height: 785px
+
+  header
+    nav
+      background: rgba(0, 0, 0, 0.5)
+      border-radius: 0
+
+    nav:last-child
+      ul
+        float: right
+
+    a
+      color: white
+      font-weight: bold
+      cursor: pointer
+
+      &:hover
+        color: #cccccc
+
+  section
+    //min-height: 100px
+    color: #ffffff
+    background-color: rgba(255, 255, 255, 0.5)
+    font-weight: bold
+
+    h1
+      font-size: 48px
+
+#projects
+  & > header
+    color: #918f8f
+    margin: 50px 0
+
+    h1
+      font-size: 48px
+
+  article
+    color: #ffffff
+    padding: 45px 0
+
+    header
+      font-size: 24px
+      padding-bottom: 14px
+
+    p
+      line-height: 1.7
+
+    aside
+      img
+        height: 215px
+
+    nav
+      margin-top: 20px
+
+      a
+        font-size: 14px
+        border: 1px solid white
+        border-radius: 25px
+        padding: 10px 20px
+        margin-right: 15px
+        color: #ffffff
+
+        &:hover
+          text-decoration: none
