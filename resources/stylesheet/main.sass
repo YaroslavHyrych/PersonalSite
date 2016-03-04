@@ -1,72 +1,120 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100&subset=latin,cyrillic-ext,cyrillic')
-@import 'vendor/bootstrap'
+//@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100&subset=latin,cyrillic-ext,cyrillic')
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600&subset=latin,cyrillic-ext,cyrillic')
+@import 'vendor/skeleton'
 
 body
-  font-family: Roboto, Helvetica, Arial, sans-serif
+  font-family: "Open Sans", sans-serif
+  color: #737373
 
-body > article:first-child
-  background: url(../img/top.jpg) 100% 100%
-  height: 785px
+h1
+  font-size: 6rem
+
+
+//Parallax
+body > section:first-child
+  padding: 0
+  position: relative
+  height: 600px
+  text-align: right
+  color: #ffffff
+  background:
+    image: url(../img/wood_background.png)
+    repeat: repeat
+    attachment: fixed
 
   header
-    nav
-      background: rgba(0, 0, 0, 0.5)
-      border-radius: 0
+    background: rgba(0,0,0,0.5)
+    height: 5rem
+    text-align: right
 
-    nav:last-child
-      ul
-        float: right
+    li
+      display: inline
 
-    a
-      color: white
-      font-weight: bold
-      cursor: pointer
+    ul:first-child
+      text-align: left
 
-      &:hover
-        color: #cccccc
+  h5
+    position: absolute
+    top: 6rem
+    right: .3rem
 
-  section
-    //min-height: 100px
-    color: #ffffff
-    background-color: rgba(255, 255, 255, 0.5)
-    font-weight: bold
+  .pc
+    width: 100%
+    height: 700px
+    background:
+      image: url(../img/mac.png)
+      position: top left
+      repeat: no-repeat
+      size: auto 700px
+    position: absolute
+    top: 30%
+    left: 0
 
-    h1
-      font-size: 48px
+  .phone
+    width: 100%
+    height: 248px
+    background:
+      image: url(../img/iphone.png)
+      position: top right
+      repeat: no-repeat
+      size: auto 248px
+    position: absolute
+    top: 64%
+    right: 22%
 
-#projects
-  & > header
-    color: #918f8f
-    margin: 50px 0
-
-    h1
-      font-size: 48px
+section
+  > header
+    text-align: right
 
   article
-    color: #ffffff
-    padding: 45px 0
+    padding: 2rem 0
 
     header
-      font-size: 24px
-      padding-bottom: 14px
+      margin-top: 3rem
 
-    p
-      line-height: 1.7
+  article:nth-child(2n + 1)
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5)
 
-    aside
-      img
-        height: 215px
+  footer
+    text-align: right
+    margin-top: 2rem
 
-    nav
-      margin-top: 20px
+//-Test
+.projects
+  height: 3000px
 
-      a
-        font-size: 14px
-        border: 1px solid white
-        border-radius: 25px
-        padding: 10px 20px
-        margin-right: 15px
-        color: #ffffff
+.second
+  color: #ffffff
+  background-color: #0fc1a1
 
-        &:hover
-          text-decoration: none
+  .button
+    color: #ffffff
+    border-color: #ffffff
+
+    &:hover
+      border-color: #ccc
+
+.third
+  background-color: #2772db
+  color: #ffffff
+
+  .button
+    color: #ffffff
+    border-color: #ffffff
+
+    &:hover
+      border-color: #ccc
+
+.fourth
+  background:
+    image: url(../img/wood_background.png)
+    repeat: repeat
+    attachment: fixed
+  color: #ffffff
+
+  .button
+    color: #ffffff
+    border-color: #ffffff
+
+    &:hover
+      border-color: #ccc

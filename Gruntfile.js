@@ -1,5 +1,25 @@
 module.exports = function(grunt) {
     grunt.initConfig({
+        //concat: {
+        //    js: {
+        //        src: [
+        //            ''
+        //        ],
+        //        dest: 'webapp/js/vendor.js'
+        //    },
+        //    css: {
+        //        src: [
+        //            ''
+        //        ],
+        //        dest: 'webapp/css/vendor.css'
+        //    }
+        //},
+        uglify: {
+            build: {
+                src: 'resources/javascript/app.js',
+                dest: 'webapp/js/app.min.js'
+            }
+        },
         imagemin: {
             dynamic: {
                 files: [{
@@ -44,13 +64,13 @@ module.exports = function(grunt) {
             options: {
                 livereload: true
             },
-            //script: {
-            //    files: ['resources/javascript/*.js'],
-            //    tasks: [''],
-            //    options: {
-            //        spawn: false
-            //    }
-            //},
+            script: {
+                files: ['resources/javascript/*.js'],
+                tasks: ['copy:debug'],
+                options: {
+                    spawn: false
+                }
+            },
             css: {
                 files: 'resources/stylesheet/**/*.sass',
                 tasks: ['sass:debug'],
@@ -65,6 +85,32 @@ module.exports = function(grunt) {
                     spawn: false
                 }
             }
+        },
+        copy: {
+            style: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components/skeleton/css/',
+                    src: '*.css',
+                    dest: 'webapp/css'
+                }]
+            },
+            javascript: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components/jquery/dist/',
+                    src: 'jquery.min.js',
+                    dest: 'webapp/js'
+                }]
+            },
+            debug: {
+                files: [{
+                    expand: true,
+                    cwd: 'resources/javascript/',
+                    src: '*.js',
+                    dest: 'webapp/js'
+                }]
+            }
         }
     });
 
@@ -72,6 +118,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    grunt.registerTask('default', ['sass', 'jade', 'imagemin']);
+    grunt.registerTask('default', ['sass', 'jade', 'imagemin', 'uglify', 'copy']);
 };
