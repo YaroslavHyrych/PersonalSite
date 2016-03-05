@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600&subset=latin,cyrillic-ext,cyrillic')
 @import 'vendor/skeleton'
 
+$small: 320px
+$large: 1024px
+$color: #737373
+
 @mixin contact-icon($width, $height, $image)
   width: $width
   height: $height
@@ -10,10 +14,6 @@
     image: url($image)
     repeat: no-repeat
     size: $width $height
-
-
-$small: 320px
-$large: 1024px
 
 @mixin respond-to-portrait($media)
   @if $media == handhelds
@@ -43,20 +43,20 @@ $large: 1024px
 
 body
   font-family: "Open Sans", sans-serif
-  color: #737373
+  color: $color
 
 h1
   font-size: 6rem
-
 
 //Parallax
 body > section:first-child
   padding: 0
   position: relative
-  height: 600px
+  height: 100%
   overflow: hidden
   text-align: right
   color: #ffffff
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5)
   background:
     image: url(../img/wood_background.png)
     repeat: repeat
@@ -99,20 +99,17 @@ body > section:first-child
       position: top right
       position-x: 216%
 
-  //@include respond-to(medium-screens)
-  //  top: 50%
-  //  background-position: top right
-
-
-.myname
+#my-name
   z-index: 1000
 
   h1
     margin-bottom: 0
+    margin-top: 0
 
   h5
     margin-top: -2rem
     margin-right: 0.4rem
+
 .contact-skype
   @include contact-icon(30px, 30px, '../img/skype.png')
 
@@ -122,10 +119,28 @@ body > section:first-child
 .contact-instagram
   @include contact-icon(30px, 30px, '../img/instagram.png')
 
-// Projects
-section
+// Content
+section#content
+
   > header
-    text-align: right
+    text-align: center
+
+    @include respond-to-portrait(handhelds)
+      text-align: center
+
+    a
+      text-decoration: none
+      color: $color
+
+    h1
+      margin: 0
+      padding: 0.67em 0
+
+      @include respond-to-portrait(handhelds)
+        font-size: 4rem
+
+      //@include respond-to-portrait(medium-screens)
+      //  font-size: 4rem
 
   article
     padding: 2rem 0
@@ -133,7 +148,10 @@ section
     header
       margin-top: 3rem
 
-    aside
+      @include respond-to-portrait(handhelds)
+        text-align: center
+
+    .project-logo
       margin-top: 3rem
 
       img
@@ -149,12 +167,6 @@ section
     @include respond-to-portrait(handhelds)
       text-align: center
 
-    //@include respond-to-landscape(medium-screens)
-    //  top: 16%
-    //  background:
-    //    position: top right
-    //    position-x: 216%
-
 article > .container
   opacity: 0
   transform: translateY(40px)
@@ -163,6 +175,9 @@ article > .container
   &.isShowing
     opacity: 1
     transform: translateY(0px)
+
+.first
+  margin-top: -40px
 
 .second
   color: #ffffff
