@@ -2,6 +2,45 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600&subset=latin,cyrillic-ext,cyrillic')
 @import 'vendor/skeleton'
 
+@mixin contact-icon($width, $height, $image)
+  width: $width
+  height: $height
+  margin: 1rem 0.4rem
+  background:
+    image: url($image)
+    repeat: no-repeat
+    size: $width $height
+
+
+$small: 320px
+$large: 1024px
+
+@mixin respond-to-portrait($media)
+  @if $media == handhelds
+    @media only screen and (max-width: $small) and (orientation: portrait)
+      @content
+
+  @else if $media == medium-screens
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) and (orientation: portrait)
+      @content
+
+  @else if $media == wide-screens
+    @media only screen and (min-width: $large) and (orientation: portrait)
+      @content
+
+@mixin respond-to-landscape($media)
+  @if $media == handhelds
+    @media only screen and (max-width: $small) and (orientation: landscape)
+      @content
+
+  @else if $media == medium-screens
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) and (orientation: landscape)
+      @content
+
+  @else if $media == wide-screens
+    @media only screen and (min-width: $large) and (orientation: landscape)
+      @content
+
 body
   font-family: "Open Sans", sans-serif
   color: #737373
@@ -15,6 +54,7 @@ body > section:first-child
   padding: 0
   position: relative
   height: 600px
+  overflow: hidden
   text-align: right
   color: #ffffff
   background:
@@ -28,39 +68,60 @@ body > section:first-child
     text-align: right
 
     li
-      display: inline
+      display: inline-block
 
-    ul:first-child
-      text-align: left
+    li:last-child
+      div
+        margin-right: 0
+
+    //ul:first-child
+    //  text-align: left
+
+#pc
+  width: 100%
+  height: 700px
+  background:
+    image: url(../img/mac.png)
+    position: top center
+    repeat: no-repeat
+    size: auto 700px
+  position: absolute
+  top: 30%
+  left: 0
+
+  @include respond-to-portrait(handhelds)
+    top: 50%
+    background-position: top right
+
+  @include respond-to-landscape(medium-screens)
+    top: 16%
+    background:
+      position: top right
+      position-x: 216%
+
+  //@include respond-to(medium-screens)
+  //  top: 50%
+  //  background-position: top right
+
+
+.myname
+  z-index: 1000
+
+  h1
+    margin-bottom: 0
 
   h5
-    position: absolute
-    top: 6rem
-    right: .3rem
+    margin-top: -2rem
+    margin-right: 0.4rem
+.contact-skype
+  @include contact-icon(30px, 30px, '../img/skype.png')
 
-  .pc
-    width: 100%
-    height: 700px
-    background:
-      image: url(../img/mac.png)
-      position: top left
-      repeat: no-repeat
-      size: auto 700px
-    position: absolute
-    top: 30%
-    left: 0
+.contact-linkedin
+  @include contact-icon(30px, 30px, '../img/linkedin.png')
 
-  .phone
-    width: 100%
-    height: 248px
-    background:
-      image: url(../img/iphone.png)
-      position: top right
-      repeat: no-repeat
-      size: auto 248px
-    position: absolute
-    top: 64%
-    right: 22%
+.contact-instagram
+  @include contact-icon(30px, 30px, '../img/instagram.png')
+
 
 section
   > header
@@ -72,6 +133,12 @@ section
     header
       margin-top: 3rem
 
+    aside
+      margin-top: 3rem
+
+      img
+        width: 100%
+
   article:nth-child(2n + 1)
     box-shadow: inset 0 0 10px rgba(0,0,0,0.5)
 
@@ -79,9 +146,14 @@ section
     text-align: right
     margin-top: 2rem
 
-//-Test
-.projects
-  height: 3000px
+    @include respond-to-portrait(handhelds)
+      text-align: center
+
+    //@include respond-to-landscape(medium-screens)
+    //  top: 16%
+    //  background:
+    //    position: top right
+    //    position-x: 216%
 
 .second
   color: #ffffff
