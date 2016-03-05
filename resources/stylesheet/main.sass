@@ -122,7 +122,7 @@ body > section:first-child
 .contact-instagram
   @include contact-icon(30px, 30px, '../img/instagram.png')
 
-
+// Projects
 section
   > header
     text-align: right
@@ -154,6 +154,15 @@ section
     //  background:
     //    position: top right
     //    position-x: 216%
+
+article > .container
+  opacity: 0
+  transform: translateY(40px)
+  transition: all 0.5s ease-in-out
+
+  &.isShowing
+    opacity: 1
+    transform: translateY(0px)
 
 .second
   color: #ffffff

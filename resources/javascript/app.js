@@ -26,6 +26,21 @@
             'transform' : 'translate(0px, -'+ phonePosY + 'px)'
         });
 
+        //if (wScroll > $window.height() /5) {
+        //    $('.first').addClass('isShowing');
+        //    //setTimeout(function() {}, 150);
+        //}
+
+        var $projects = $('article .container');
+        $projects.each(function(i) {
+            var $project = $projects.eq(i);
+            var height = $window.height();
+            var slide = height * 0.2;
+            if (wScroll + height - slide > $project.offset().top) {
+                $project.addClass('isShowing');
+            }
+        });
+
         //$('.projects > header').css({
         //    'transform' : 'translate(-' +  wScroll /2 + 'px, 0px)'
         //});
