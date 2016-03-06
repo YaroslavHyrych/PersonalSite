@@ -1,48 +1,14 @@
 //@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100&subset=latin,cyrillic-ext,cyrillic')
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600&subset=latin,cyrillic-ext,cyrillic')
 @import 'vendor/skeleton'
+@import "modules/mixins"
 
-$small: 320px
-$large: 1024px
 $color: #737373
-
-@mixin contact-icon($width, $height, $image)
-  width: $width
-  height: $height
-  margin: 1rem 0.4rem
-  background:
-    image: url($image)
-    repeat: no-repeat
-    size: $width $height
-
-@mixin respond-to-portrait($media)
-  @if $media == handhelds
-    @media only screen and (max-width: $small) and (orientation: portrait)
-      @content
-
-  @else if $media == medium-screens
-    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) and (orientation: portrait)
-      @content
-
-  @else if $media == wide-screens
-    @media only screen and (min-width: $large) and (orientation: portrait)
-      @content
-
-@mixin respond-to-landscape($media)
-  @if $media == handhelds
-    @media only screen and (max-width: $small) and (orientation: landscape)
-      @content
-
-  @else if $media == medium-screens
-    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) and (orientation: landscape)
-      @content
-
-  @else if $media == wide-screens
-    @media only screen and (min-width: $large) and (orientation: landscape)
-      @content
+$font-family: "Open Sans", sans-serif
+$light-color: #ffffff
 
 body
-  font-family: "Open Sans", sans-serif
+  font-family: $font-family
   color: $color
 
 h1
@@ -55,7 +21,7 @@ body > section:first-child
   height: 100%
   overflow: hidden
   text-align: right
-  color: #ffffff
+  color: $light-color
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5)
   background:
     image: url(../img/wood_background.png)
@@ -89,11 +55,19 @@ body > section:first-child
   top: 30%
   left: 0
 
-  @include respond-to-portrait(handhelds)
+  @include respond-to-portrait(phone)
     top: 50%
     background-position: top right
 
-  @include respond-to-landscape(medium-screens)
+  @include respond-to-portrait(phablet)
+    top: 50%
+    background:
+      position: top right
+
+  @include respond-to-landscape(phone)
+    background-position-x: 250%
+
+  @include respond-to-landscape(tablet)
     top: 16%
     background:
       position: top right
@@ -105,6 +79,10 @@ body > section:first-child
   h1
     margin-bottom: 0
     margin-top: 0
+
+    @include respond-to-landscape(tablet)
+      width: 80%
+      margin-left: auto
 
   h5
     margin-top: -2rem
@@ -125,7 +103,7 @@ section#content
   > header
     text-align: center
 
-    @include respond-to-portrait(handhelds)
+    @include respond-to-portrait(phone)
       text-align: center
 
     a
@@ -136,7 +114,10 @@ section#content
       margin: 0
       padding: 0.67em 0
 
-      @include respond-to-portrait(handhelds)
+      @include respond-to-portrait(phone)
+        font-size: 4rem
+
+      @include respond-to-portrait(phablet)
         font-size: 4rem
 
       //@include respond-to-portrait(medium-screens)
@@ -148,7 +129,7 @@ section#content
     header
       margin-top: 3rem
 
-      @include respond-to-portrait(handhelds)
+      @include respond-to-portrait(phone)
         text-align: center
 
     .project-logo
@@ -164,7 +145,7 @@ section#content
     text-align: right
     margin-top: 2rem
 
-    @include respond-to-portrait(handhelds)
+    @include respond-to-portrait(phone)
       text-align: center
 
 article > .container
@@ -176,41 +157,15 @@ article > .container
     opacity: 1
     transform: translateY(0px)
 
+// Projects
 .first
   margin-top: -40px
 
 .second
-  color: #ffffff
-  background-color: #0fc1a1
-
-  .button
-    color: #ffffff
-    border-color: #ffffff
-
-    &:hover
-      border-color: #ccc
+  @include project($light-color, #0fc1a1)
 
 .third
-  background-color: #2772db
-  color: #ffffff
-
-  .button
-    color: #ffffff
-    border-color: #ffffff
-
-    &:hover
-      border-color: #ccc
+  @include project($light-color, #2772db)
 
 .fourth
-  background:
-    image: url(../img/wood_background.png)
-    repeat: repeat
-    attachment: fixed
-  color: #ffffff
-
-  .button
-    color: #ffffff
-    border-color: #ffffff
-
-    &:hover
-      border-color: #ccc
+  @include project($light-color, #2772db, '../img/wood_background.png')

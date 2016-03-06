@@ -1,0 +1,73 @@
+@mixin contact-icon($width, $height, $image)
+  width: $width
+  height: $height
+  margin: 1rem 0.4rem
+  background:
+    image: url($image)
+    repeat: no-repeat
+    size: $width $height
+
+@mixin project($text-color, $background-color, $background-image: null)
+  @if $background-image != null
+    background:
+      color: $background-color
+      image: url($background-image)
+      repeat: repeat
+      attachment: fixed
+  @else
+    background-color: $background-color
+
+  color: $text-color
+
+  .button
+    color: $text-color
+    border-color: $text-color
+
+    &:hover
+      border-color: #ccc
+
+$small: 320px
+$medium: 600px
+$large: 1024px
+
+@mixin respond-to-portrait($gadget)
+  @if $gadget == phone
+    @media only screen and (max-width: $small) and (orientation: portrait)
+      @content
+
+  @else if $gadget == phablet
+    @media only screen and (min-width: $small + 1) and (max-width: $medium - 1) and (orientation: portrait)
+      @content
+
+  @else if $gadget == tablet
+    @media only screen and (min-width: $medium + 1) and (max-width: $large - 1) and (orientation: portrait)
+      @content
+
+  @else if $gadget == pc
+    @media only screen and (min-width: $large) and (orientation: portrait)
+      @content
+
+  @else if $gadget == ultra
+    @media only screen and (min-width: $large) and (orientation: portrait)
+      @content
+
+@mixin respond-to-landscape($gadget)
+  @if $gadget == phone
+    @media only screen and (max-width: $small) and (orientation: landscape)
+      @content
+
+  @else if $gadget == phablet
+    @media only screen and (min-width: $small + 1) and (max-width: $medium - 1) and (orientation: landscape)
+      @content
+
+  @else if $gadget == tablet
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) and (max-height: 600px - 1) and (orientation: landscape)
+      @content
+
+  @else if $gadget == pc
+    @media only screen and (min-width: $large) and (orientation: landscape)
+      @content
+
+  @else if $gadget == ultra
+    @media only screen and (min-width: $large) and (orientation: landscape)
+      @content
