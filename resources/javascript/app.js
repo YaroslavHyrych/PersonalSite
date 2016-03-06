@@ -58,6 +58,7 @@
     $window.on('resize orientationchange', rebuildFrontPage);
 
     $document.ready(function() {
+        var $popup = $('#popup');
 
         rebuildFrontPage();
 
@@ -65,7 +66,23 @@
             $("html, body").animate({ scrollTop: $('#content').offset().top }, 1000)
         });
 
+        $('#front-page').find('li').hover(function() {
+            var $li = $(this);
+            var text = $li.find('div').attr('text');
 
+            $popup.text(text);
+
+            $popup.css({
+                top : $li.offset().top + $li.innerHeight() + 10,
+                left: $li.offset().left - $popup.width() /2
+            });
+
+            $li.addClass('hover');
+            $popup.stop().show();
+        }, function() {
+            $(this).removeClass('hover');
+            $popup.stop().hide();
+        });
         //$('div[class*=contact]').hover(function() {
             //console.log($())
         //});

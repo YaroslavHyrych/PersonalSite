@@ -9,6 +9,7 @@ html(lang="en")
         link(href="css/style.css", rel="stylesheet")
         script(src="js/jquery.min.js")
         script(src="js/app.js")
+    include ./mixins/mixin
     body
         section.u-full-width#front-page
             header.u-full-width
@@ -19,22 +20,9 @@ html(lang="en")
                         //li 4
                         //li 5
                     ul.twelve.columns
-                        li
-                            .contact-skype(text="toorist3")
-                        li
-                            .contact-linkedin
-                        li
-                            .contact-instagram
-                        li
-                            .contact-facebook
-                        li
-                            .contact-gihthub
-                        li
-                            .contact-email
-                        li
-                            .contact-app-tore
-                        li
-                            .contact-google-play
+                        + contact('contact-skype', 'toorist3')
+                        + contact('contact-linkedin', 'Link to profile', 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic')
+                        + contact('contact-instagram', 'Link to profile', 'https://www.instagram.com/yarkogyrych/')
 
             .container#my-name
                 h1  YAROSLAV HYRYCH
@@ -49,59 +37,9 @@ html(lang="en")
             header.container
                 h1 MY PROJECTS
 
-            article.u-full-width.first
-                .container
-                    .four.columns.project-logo
-                        img(src='img/project_1.png')
-                    .eight.columns
-                        header
-                            h4 Some program
-                        p
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            | lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            | lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        footer
-                            .button VIEW DETAILS
+            + project('first', 'img/project_1.png', '#', 'Some program', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
+            + project('second', 'img/project_1.png', '#', 'Some program', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
+            + project('third', 'img/project_1.png', '#', 'Some program', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
+            + project('fourth', 'img/project_1.png', '#', 'Some program', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
 
-
-            article.u-full-width.second
-                .container
-                    .four.columns.project-logo
-                        img(src='img/project_1.png')
-                    .eight.columns
-                        header
-                            h4 Some program
-                        p
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            | lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            | lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        footer
-                            .button VIEW DETAILS
-
-            article.u-full-width.third
-                .container
-                    .four.columns.project-logo
-                        img(src='img/project_1.png')
-                    .eight.columns
-                        header
-                            h4 Some program
-                        p
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            | lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            | lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        footer
-                            .button VIEW DETAILS
-
-            article.u-full-width.fourth
-                .container
-                    .four.columns.project-logo
-                        img(src='img/project_1.png')
-                    .eight.columns
-                        header
-                            h4 Some program
-                        p
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            | lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            | lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        footer
-                            .button VIEW DETAILS
+    #popup Ololo

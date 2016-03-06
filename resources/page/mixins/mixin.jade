@@ -1,0 +1,18 @@
+mixin contact(style, text, url)
+    li
+        a(href=url, target='_blank')
+            div(class=style, text=text)
+
+
+mixin project(className, logo, url, name, description)
+    article(class='u-full-width #{className}')
+        .container
+            .four.columns.project-logo
+                img(src=logo)
+            .eight.columns
+                header
+                    h4= name
+                p= description
+                footer
+                    a(href=url, target="_blank")
+                        .button VIEW DETAILS

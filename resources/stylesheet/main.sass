@@ -35,6 +35,24 @@ body > section:first-child
 
     li
       display: inline-block
+      position: relative
+      margin: 0 0.2em
+
+      &.hover
+        &:after
+          content: ''
+          width: 0
+          height: 0
+          border:
+            width: 10px
+            top-color: transparent
+            left-color: transparent
+            right-color: transparent
+            bottom-color: rgba(0, 0, 0, 0.5)
+            style: solid
+          position: absolute
+          bottom: -10px
+          left: 10px
 
     li:last-child
       div
@@ -88,6 +106,14 @@ body > section:first-child
     margin-top: -2rem
     margin-right: 0.4rem
 
+#popup
+  position: absolute
+  display: none
+  padding: 0.5em 1.5em
+  border-radius: 0.5em
+  color: #ffffff
+  background: rgba(0,0,0, 0.5)
+
 .contact-skype
   @include contact-icon(30px, 30px, '../img/skype.png')
 
@@ -102,6 +128,7 @@ section#content
 
   > header
     text-align: center
+    cursor: pointer
 
     @include respond-to-portrait(phone)
       text-align: center
