@@ -61,6 +61,11 @@
 
         rebuildFrontPage();
 
+        $('#content').find('> header').on('click touch', function() {
+            $("html, body").animate({ scrollTop: $('#content').offset().top }, 1000)
+        });
+
+
         //$('div[class*=contact]').hover(function() {
             //console.log($())
         //});
