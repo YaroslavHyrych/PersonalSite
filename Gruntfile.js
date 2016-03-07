@@ -121,5 +121,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    grunt.registerTask('default', ['sass', 'jade', 'imagemin', 'uglify', 'copy']);
+    grunt.registerTask('default', ['sass:release', 'jade', 'imagemin', 'uglify', 'copy:style', 'copy:javascript']);
 };

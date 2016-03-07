@@ -7,18 +7,12 @@
         var height = $window.height();
         var newHeight = height;
 
-        var $contentHeader = $('#content').find('> header').eq(0);
+        var $contentHeader = $('.content').eq(0).find('> header').eq(0);
 
         if ($contentHeader === undefined) return;
 
         var contentHeaderHeight = $contentHeader.height();
 
-        //if (height > width && height >= 600) {
-        //    var $firstProject = $contentHeader.next();
-        //    console.log('$firstProject = ' + $firstProject.height());
-        //    newHeight -= $firstProject.innerHeight() + contentHeaderHeight;
-        //    $window.trigger('scroll');
-        //} else
         if(height > width || height >= 600) {
             newHeight -= contentHeaderHeight;
         }
@@ -43,7 +37,7 @@
             'transform' : 'translate(0px, -'+ phonePosY + 'px)'
         });
 
-        var $projects = $('article .container');
+        var $projects = $('article .container, #skills img');
         $projects.each(function(i) {
             var $project = $projects.eq(i);
             var height = $window.height();
@@ -62,8 +56,13 @@
 
         rebuildFrontPage();
 
-        $('#content').find('> header').on('click touch', function() {
-            $("html, body").animate({ scrollTop: $('#content').offset().top }, 1000)
+        var $headers = $('.content').find('> header');
+
+        $headers.on('click touch', function() {
+            var $contentBlock = $(this).parent();
+            $("html, body").animate({
+                scrollTop: $contentBlock.offset().top
+            }, 1000);
         });
 
         $('#front-page').find('li').hover(function() {
@@ -83,10 +82,6 @@
             $(this).removeClass('hover');
             $popup.stop().hide();
         });
-        //$('div[class*=contact]').hover(function() {
-            //console.log($())
-        //});
-
     });
 })(jQuery);
 

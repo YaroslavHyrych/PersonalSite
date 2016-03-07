@@ -1,0 +1,70 @@
+body > section:first-child
+  padding: 0
+  position: relative
+  height: 100%
+  overflow: hidden
+  text-align: right
+  color: $light-color
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5)
+  background:
+    image: url(../img/wood_background.png)
+    repeat: repeat
+    attachment: fixed
+
+  header
+    background: rgba(0,0,0,0.5)
+    height: 5rem
+    text-align: right
+
+    li
+      display: inline-block
+      position: relative
+      margin: 0 0.2em
+
+      &.hover
+        &:after
+          content: ''
+          width: 0
+          height: 0
+          border:
+            width: 10px
+            top-color: transparent
+            left-color: transparent
+            right-color: transparent
+            bottom-color: rgba(0, 0, 0, 0.5)
+            style: solid
+          position: absolute
+          bottom: -10px
+          left: 10px
+
+    li:last-child
+      div
+        margin-right: 0
+
+//ul:first-child
+//  text-align: left
+
+#my-name
+  z-index: 1000
+
+  h1
+    margin-bottom: 0
+    margin-top: 0
+
+    @include respond-to-landscape(tablet)
+      width: 80%
+      margin-left: auto
+
+  h5
+    margin-top: -2rem
+    margin-right: 0.4rem
+
+
+.contact-skype
+  @include contact-icon(30px, 30px, '../img/skype.png')
+
+.contact-linkedin
+  @include contact-icon(30px, 30px, '../img/linkedin.png')
+
+.contact-instagram
+  @include contact-icon(30px, 30px, '../img/instagram.png')

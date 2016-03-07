@@ -14,11 +14,6 @@ html(lang="en")
         section.u-full-width#front-page
             header.u-full-width
                 nav.container.row
-                    //ul.six.columns
-                        //li 1
-                        //li 3
-                        //li 4
-                        //li 5
                     ul.twelve.columns
                         + contact('contact-skype', 'toorist3')
                         + contact('contact-linkedin', 'Link to profile', 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic')
@@ -32,14 +27,29 @@ html(lang="en")
             //.phone
 
 
-        section#content.u-full-width
+        section.content.u-full-width
 
             header.container
                 h1 MY PROJECTS
 
             + project('first', 'img/project_1.png', '#', 'Some program', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
-            + project('second', 'img/project_1.png', '#', 'Some program', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
-            + project('third', 'img/project_1.png', '#', 'Some program', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
+            + project('second shadow', 'img/project_1.png', '#', 'Some program', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
+            + project('third inset-shadow', 'img/project_1.png', '#', 'Some program', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
             + project('fourth', 'img/project_1.png', '#', 'Some program', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
 
-    #popup Ololo
+        section.content.u-full-width.inset-shadow#skills
+            header.container
+                h1 WORK WITH
+
+            .container.row
+                + skill('img/java.gif')
+                + skill('img/htmlcss.gif')
+                + skill('img/js.gif')
+            .container.row
+                + skill('img/gwt.gif')
+                + skill('img/jquery.gif')
+                + skill('img/sass.gif')
+            .container.row
+                + skill('img/bootstrap.gif')
+
+    #popup
