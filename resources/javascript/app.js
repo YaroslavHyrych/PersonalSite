@@ -22,6 +22,10 @@
         });
     }
 
+    function showPopupAsTooltip(text, element) {
+
+    }
+
     $window.scroll(function() {
 
         var wScroll = $(this).scrollTop();
@@ -65,8 +69,8 @@
             }, 1000);
         });
 
-        $('#front-page').find('li').hover(function() {
-            var $li = $(this);
+        var showTooltip = function(element) {
+            var $li = $(element);
             var text = $li.find('div').attr('text');
 
             $popup.text(text);
@@ -78,9 +82,32 @@
 
             $li.addClass('hover');
             $popup.stop().show();
-        }, function() {
-            $(this).removeClass('hover');
+            console.log('Show');
+        };
+
+        var hideTooltip = function(element) {
+            $(element).removeClass('hover');
             $popup.stop().hide();
+            console.log('Hide');
+        };
+
+        var $contacts = $('#front-page').find('li');
+        $contacts.hover(function() {
+            showTooltip(this);
+        }, function() {
+            console.log('Hide by blur');
+            hideTooltip(this);
+        });
+
+        $contacts.on('touchend', function() {
+            var that = this;
+            showTooltip(this);
+
+            console.log('Show by touch');
+
+            setTimeout(function() {
+                hideTooltip(that)
+            }, 3000);
         });
     });
 })(jQuery);
