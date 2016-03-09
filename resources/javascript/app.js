@@ -22,10 +22,6 @@
         });
     }
 
-    function showPopupAsTooltip(text, element) {
-
-    }
-
     $window.scroll(function() {
 
         var wScroll = $(this).scrollTop();
@@ -69,26 +65,6 @@
             }, 1000);
         });
 
-        var showTooltip = function(element) {
-            var $li = $(element);
-            var text = $li.find('div').attr('text');
-
-            $popup.text(text);
-
-            $popup.css({
-                top : $li.offset().top + $li.innerHeight() + 10,
-                left: $li.offset().left - $popup.width() /2
-            });
-
-            $li.addClass('hover');
-            $popup.stop().show();
-        };
-
-        var hideTooltip = function(element) {
-            $(element).removeClass('hover');
-            $popup.stop().hide();
-        };
-
         var timeout;
         var $contacts = $('#front-page').find('li');
         $contacts.hover(function() {
@@ -97,12 +73,13 @@
             hideTooltip(this);
         });
 
-        $contacts.on('touch', function() {
+        $contacts.on('touchstart', function() {
             var that = this;
 
             var $hovered = $contacts.filter('.hover');
             if ($hovered) {
                 $hovered.removeClass('hover');
+                if (timeout) clearTimeout(timeout);
             }
 
             showTooltip(this);
@@ -113,6 +90,40 @@
                 hideTooltip(that)
             }, 3000);
         });
+
+        function showTooltip(element) {
+            var $elem = $(element);
+            var text = $elem.find('div').attr('text');
+
+            $popup.removeAttr('style');
+            $popup.text(text);
+
+            var top = $elem.offset().top + $elem.innerHeight() + 10;
+            var left = $elem.offset().left - $popup.innerWidth() /2;
+            var width = ($popup.innerWidth() > $window.width()) ? window.width() : $popup.width();
+
+            if (left + $popup.innerWidth() > $window.width()) {//TODO fix full width
+                left = $elem.offset().left + $elem.width() - $popup.innerWidth();
+            }
+
+            $popup.css({
+                top : top,
+                left: left,
+                width: width
+            });
+
+            $elem.addClass('hover');
+            $popup.stop().show();
+        }
+
+        function hideTooltip(element) {
+            $(element).removeClass('hover');
+            $popup.stop().hide();
+        }
+
+        function setTooltipPosition() {
+
+        }
     });
 })(jQuery);
 

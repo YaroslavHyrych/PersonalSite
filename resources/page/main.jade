@@ -8,17 +8,16 @@ html(lang="en")
         link(href="css/normalize.css", rel="stylesheet")
         link(href="css/style.css", rel="stylesheet")
         script(src="js/jquery.min.js")
-        script(src="js/app.js")
+        script(src="js/app.min.js")
     include ./mixins/mixin
     body
         section.u-full-width#front-page
             header.u-full-width
                 nav.container.row
                     ul.twelve.columns
-                        + contact('contact-skype', 'toorist3')
                         + contact('contact-linkedin', 'Link to profile. Click again to go', 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic')
                         + contact('contact-instagram', 'Link to profile. Click again to go', 'https://www.instagram.com/yarkogyrych/')
-
+                        + contact('contact-skype', 'toorist3')
             .container#my-name
                 h1  YAROSLAV HYRYCH
                 h5  Web Developer
