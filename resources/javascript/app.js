@@ -82,30 +82,34 @@
 
             $li.addClass('hover');
             $popup.stop().show();
-            console.log('Show');
         };
 
         var hideTooltip = function(element) {
             $(element).removeClass('hover');
             $popup.stop().hide();
-            console.log('Hide');
         };
 
+        var timeout;
         var $contacts = $('#front-page').find('li');
         $contacts.hover(function() {
             showTooltip(this);
         }, function() {
-            console.log('Hide by blur');
             hideTooltip(this);
         });
 
-        $contacts.on('touchend', function() {
+        $contacts.on('touch', function() {
             var that = this;
+
+            var $hovered = $contacts.filter('.hover');
+            if ($hovered) {
+                $hovered.removeClass('hover');
+            }
+
             showTooltip(this);
 
-            console.log('Show by touch');
+            if (timeout) clearTimeout(timeout);
 
-            setTimeout(function() {
+            timeout = setTimeout(function() {
                 hideTooltip(that)
             }, 3000);
         });
