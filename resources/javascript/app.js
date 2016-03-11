@@ -1,6 +1,7 @@
 (function($) {
     var $window = $(window);
     var $document = $(document);
+    var windowScrollCoeficient = 0.2;
 
     function rebuildFrontPage() {
         var width = $window.width();
@@ -41,7 +42,7 @@
         $projects.each(function(i) {
             var $project = $projects.eq(i);
             var height = $window.height();
-            var slide = height * 0.2;
+            var slide = height * windowScrollCoeficient;
             if (wScroll + height - slide > $project.offset().top) {
                 $project.addClass('isShowing');
             }
@@ -91,6 +92,11 @@
             }, 3000);
         });
 
+        var $sections = $('body').find('> section');
+        $sections.eq($sections.size()-1).css({
+            'padding-bottom' : windowScrollCoeficient * $window.height()
+        });
+
         function showTooltip(element) {
             var $elem = $(element);
             var text = $elem.find('div').attr('text');
@@ -121,6 +127,7 @@
             $popup.stop().hide();
         }
 
+        //TOTO change orientation
         function setTooltipPosition() {
 
         }

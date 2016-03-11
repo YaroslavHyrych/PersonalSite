@@ -22,36 +22,6 @@ h1
 .shadow
   box-shadow: 0 0 10px rgba(0,0,0,0.5)
 
-#pc
-  width: 100%
-  height: 700px
-  background:
-    image: url(../img/mac.png)
-    position: top center
-    repeat: no-repeat
-    size: auto 700px
-  position: absolute
-  top: 30%
-  left: 0
-
-  @include respond-to-portrait(phone)
-    top: 50%
-    background-position: top right
-
-  @include respond-to-portrait(phablet)
-    top: 50%
-    background:
-      position: top right
-
-  @include respond-to-landscape(phone)
-    background-position-x: 250%
-
-  @include respond-to-landscape(tablet)
-    top: 16%
-    background:
-      position: top right
-      position-x: 216%
-
 #popup
   position: absolute
   display: none
