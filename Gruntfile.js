@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         //concat: {
         //    js: {
         //        src: [
@@ -86,6 +87,16 @@ module.exports = function(grunt) {
                 }
             }
         },
+        jshint: {
+            files: ['Gruntfile.js', this.js_folder + '*.js'],
+            options: {
+                globals: {
+                    jQuery: true,
+                    console: true,
+                    module: true
+                }
+            }
+        },
         copy: {
             style: {
                 files: [{
@@ -120,6 +131,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
-    grunt.registerTask('default', ['sass:release', 'jade', 'imagemin', 'uglify', 'copy:style', 'copy:javascript']);
+    grunt.registerTask('default', ['sass:release', 'jade', 'imagemin', 'jshint', 'uglify', 'copy:style', 'copy:javascript']);
 };
