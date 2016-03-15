@@ -88,7 +88,7 @@
             if (timeout) clearTimeout(timeout);
 
             timeout = setTimeout(function() {
-                hideTooltip(that)
+                hideTooltip(that);
             }, 3000);
         });
 

@@ -1,6 +1,11 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        js_folder: 'resources/javascript',
+        sass_folder: 'resources/stylesheet',
+        images_folder: 'resources/images',
+        jade_folder: 'resources/page',
+        target_folder: 'webapp',
         //concat: {
         //    js: {
         //        src: [
@@ -17,17 +22,17 @@ module.exports = function(grunt) {
         //},
         uglify: {
             build: {
-                src: 'resources/javascript/app.js',
-                dest: 'webapp/js/app.min.js'
+                src: '<%= js_folder %>/app.js',
+                dest: '<%= target_folder %>/js/app.min.js'
             }
         },
         imagemin: {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: 'resources/images/',
+                    cwd: '<%= images_folder %>/',
                     src: ['*.{png,jpg,JPG,gif}'],
-                    dest: 'webapp/img'
+                    dest: '<%= target_folder %>/img'
                 }]
             }
         },
@@ -37,7 +42,7 @@ module.exports = function(grunt) {
                     style: 'nested'
                 },
                 files: {
-                    'webapp/css/style.css' : 'resources/stylesheet/main.sass'
+                    '<%= target_folder %>/css/style.css' : '<%= sass_folder %>/main.sass'
                 }
             },
             release: {
@@ -45,7 +50,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'webapp/css/style.css' : 'resources/stylesheet/main.sass'
+                    '<%= target_folder %>/css/style.css' : '<%= sass_folder %>/main.sass'
                 }
             }
         },
@@ -57,7 +62,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'webapp/index.html' : 'resources/page/main.jade'
+                    '<%= target_folder %>/index.html' : '<%= jade_folder %>/main.jade'
                 }
             }
         },
@@ -66,21 +71,21 @@ module.exports = function(grunt) {
                 livereload: true
             },
             script: {
-                files: ['resources/javascript/*.js'],
+                files: ['<%= js_folder %>/*.js'],
                 tasks: ['copy:debug'],
                 options: {
                     spawn: false
                 }
             },
             css: {
-                files: 'resources/stylesheet/**/*.sass',
+                files: '<%= sass_folder %>/**/*.sass',
                 tasks: ['sass:debug'],
                 options: {
                     spawn: false
                 }
             },
             jade: {
-                files: 'resources/page/*.jade',
+                files: '<%= jade_folder %>/*.jade',
                 tasks: ['jade'],
                 options: {
                     spawn: false
@@ -88,7 +93,7 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            files: ['Gruntfile.js', this.js_folder + '*.js'],
+            files: ['Gruntfile.js', '<%= js_folder %>/*.js'],
             options: {
                 globals: {
                     jQuery: true,
@@ -103,7 +108,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'bower_components/skeleton/css/',
                     src: '*.css',
-                    dest: 'webapp/css'
+                    dest: '<%= target_folder %>/css'
                 }]
             },
             javascript: {
@@ -111,7 +116,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'bower_components/jquery/dist/',
                     src: 'jquery.min.js',
-                    dest: 'webapp/js'
+                    dest: '<%= target_folder %>/js'
                 }]
             },
             debug: {
@@ -119,7 +124,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'resources/javascript/',
                     src: '*.js',
-                    dest: 'webapp/js'
+                    dest: '<%= target_folder %>/js'
                 }]
             }
         }
