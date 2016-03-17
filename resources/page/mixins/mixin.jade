@@ -4,17 +4,17 @@ mixin contact(style, text, url)
             div(class=style, text=text)
 
 
-mixin project(className, logo, url, name, description)
-    article(class='u-full-width #{className}')
+mixin project(project)
+    article(class='u-full-width #{project.className}')
         .container
             .four.columns.project-logo
-                img(src=logo)
+                img(src=project.logo)
             .eight.columns
                 header
-                    h4= name
-                p= description
+                    h4= project.name
+                p= project.description
                 footer
-                    a(href=url, target="_blank")
+                    a(href=project.url, target="_blank")
                         .button VIEW DETAILS
 
 mixin skill(img)
