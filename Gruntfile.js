@@ -6,20 +6,15 @@ module.exports = function(grunt) {
         images_folder: 'resources/images',
         jade_folder: 'resources/page',
         target_folder: 'webapp',
-        //concat: {
-        //    js: {
-        //        src: [
-        //            ''
-        //        ],
-        //        dest: 'webapp/js/vendor.js'
-        //    },
-        //    css: {
-        //        src: [
-        //            ''
-        //        ],
-        //        dest: 'webapp/css/vendor.css'
-        //    }
-        //},
+        concat: {
+            js: {
+                src: [
+                    '<%= js_folder %>/animation.js',
+                    '<%= js_folder %>/sources.js'
+                ],
+                dest: '<%= js_folder%>/app.js'
+            }
+        },
         uglify: {
             build: {
                 src: '<%= js_folder %>/app.js',
@@ -71,8 +66,8 @@ module.exports = function(grunt) {
                 livereload: true
             },
             script: {
-                files: ['<%= js_folder %>/*.js'],
-                tasks: ['copy:debug'],
+                files: ['<%= js_folder %>/**/*.js'],
+                tasks: ['concat:js', 'uglify'],
                 options: {
                     spawn: false
                 }
@@ -85,7 +80,7 @@ module.exports = function(grunt) {
                 }
             },
             jade: {
-                files: '<%= jade_folder %>/*.jade',
+                files: '<%= jade_folder %>/**/*.jade',
                 tasks: ['jade'],
                 options: {
                     spawn: false
@@ -118,14 +113,6 @@ module.exports = function(grunt) {
                     src: 'jquery.min.js',
                     dest: '<%= target_folder %>/js'
                 }]
-            },
-            debug: {
-                files: [{
-                    expand: true,
-                    cwd: 'resources/javascript/',
-                    src: '*.js',
-                    dest: '<%= target_folder %>/js'
-                }]
             }
         }
     });
@@ -137,6 +124,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
-    grunt.registerTask('default', ['sass:release', 'jade', 'imagemin', 'jshint', 'uglify', 'copy:style', 'copy:javascript']);
+    grunt.registerTask('default', ['sass:release', 'jade', 'imagemin', 'concat', 'jshint', 'uglify', 'copy:style', 'copy:javascript']);
 };

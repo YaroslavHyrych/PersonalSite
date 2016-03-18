@@ -1,20 +1,20 @@
-mixin contact(style, text, url)
+mixin contact(contact)
     li
-        a(href=url, target='_blank')
-            div(class=style, text=text)
+        a(href= contact.url, target='_blank')
+            div(class= contact.class, text= contact.title)
 
 
 mixin project(project)
-    article(class='u-full-width #{project.className}')
+    article(class='u-full-width #{project.class}')
         .container
             .four.columns.project-logo
-                img(src=project.logo)
+                img(src= project.img)
             .eight.columns
                 header
                     h4= project.name
                 p= project.description
                 footer
-                    a(href=project.url, target="_blank")
+                    a(href= project.url, target="_blank")
                         .button VIEW DETAILS
 
 mixin skill(img)
