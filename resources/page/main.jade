@@ -8,58 +8,65 @@ html(lang="en")
         link(href="css/normalize.css", rel="stylesheet")
         link(href="css/style.css", rel="stylesheet")
         script(src="js/jquery.min.js")
+        script(src="js/slideout.js")
         script(src="js/app.min.js")
     include ./mixins/mixin
     body
-        section.u-full-width#front-page
-            header.u-full-width
-                nav.container.row
-                    ul.twelve.columns
-                        -
-                            var contacts = [
-                                {'class': 'contact-linkedin', 'title': 'Link to profile', 'url': 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic'},
-                                {'class': 'contact-instagram', 'title': 'Link to profile', 'url': 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic'},
-                                {'class': 'contact-skype', 'title': 'toorist3'}
-                            ];
-                        each contact in contacts
-                            + contact(contact)
-            .container#my-name
-                h1  YAROSLAV HYRYCH
-                h5  Web Developer
+        nav#menu
+            div
+                h1
+                    | lol
 
-            #pc
+        main#main
+            section.u-full-width#front-page
+                header.u-full-width
+                    nav.container.row
+                        ul.twelve.columns
+                            -
+                                var contacts = [
+                                    {'class': 'contact-linkedin', 'title': 'Link to profile', 'url': 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic'},
+                                    {'class': 'contact-instagram', 'title': 'Link to profile', 'url': 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic'},
+                                    {'class': 'contact-skype', 'title': 'toorist3'}
+                                ];
+                            each contact in contacts
+                                + contact(contact)
+                .container#my-name
+                    h1  YAROSLAV HYRYCH
+                    h5  Web Developer
 
-        section.content.u-full-width
+                #pc
 
-            header.container
-                h1 MY PROJECTS
+            section.content.u-full-width
 
-            -
-                var projects = [
-                    { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'first', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-                    { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'second shadow', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-                    { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'third inset-shadow', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-                    { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'fourth', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
-                ];
+                header.container
+                    h1 MY PROJECTS
 
-            each project in projects
-                + project(project)
+                -
+                    var projects = [
+                        { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'first', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+                        { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'second shadow', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+                        { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'third inset-shadow', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+                        { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'fourth', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
+                    ];
 
-        section.content.u-full-width.inset-shadow#skills
-            header.container
-                h1 WORK WITH
+                each project in projects
+                    + project(project)
 
-            .container.row
-                + skill('img/java.gif')
-                + skill('img/htmlcss.gif')
-                + skill('img/js.gif')
-            .container.row
-                + skill('img/gwt.gif')
-                + skill('img/jquery.gif')
-                + skill('img/sass.gif')
-            .container.row
-                + skill('img/bootstrap.gif')
-                + skill('img/grunt.gif')
-                + skill('img/jade.gif')
+            section.content.u-full-width.inset-shadow#skills
+                header.container
+                    h1 WORK WITH
+
+                .container.row
+                    + skill('img/java.gif')
+                    + skill('img/htmlcss.gif')
+                    + skill('img/js.gif')
+                .container.row
+                    + skill('img/gwt.gif')
+                    + skill('img/jquery.gif')
+                    + skill('img/sass.gif')
+                .container.row
+                    + skill('img/bootstrap.gif')
+                    + skill('img/grunt.gif')
+                    + skill('img/jade.gif')
 
     #popup

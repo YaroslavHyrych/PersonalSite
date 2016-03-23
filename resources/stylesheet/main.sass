@@ -1,6 +1,7 @@
 //@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100&subset=latin,cyrillic-ext,cyrillic')
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600&subset=latin,cyrillic-ext,cyrillic')
 @import 'vendor/skeleton'
+@import 'vendor/slideout'
 @import "modules/variables"
 @import "modules/mixins"
 @import "partials/projects"
@@ -89,3 +90,13 @@ article > .container, #skills img
   &.isShowing
     opacity: 1
     transform: translateY(0px)
+
+
+#menu
+  width: 300px
+
+  @include respond-to-portrait(phablet)
+    width: 80%
+
+  @include respond-to-landscape(tablet)
+    width: 80%

@@ -13,7 +13,8 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^2.2.1",
-    "skeleton": "2.0.4"
+    "jquery": "git://github.com/jquery/jquery.git#^2.2.2",
+    "skeleton": "2.0.4",
+    "slideout.js": "https://github.com/mango/slideout.git#^0.1.12"
   }
 }

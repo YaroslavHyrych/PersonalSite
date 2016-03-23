@@ -106,11 +106,19 @@ module.exports = function(grunt) {
                     dest: '<%= target_folder %>/css'
                 }]
             },
-            javascript: {
+            jquery: {
                 files: [{
                     expand: true,
                     cwd: 'bower_components/jquery/dist/',
                     src: 'jquery.min.js',
+                    dest: '<%= target_folder %>/js'
+                }]
+            },
+            slideout: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components/slideout.js/dist/',
+                    src: 'slideout.js',
                     dest: '<%= target_folder %>/js'
                 }]
             }
@@ -126,5 +134,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
 
-    grunt.registerTask('default', ['sass:release', 'jade', 'imagemin', 'concat', 'jshint', 'uglify', 'copy:style', 'copy:javascript']);
+    grunt.registerTask('default', ['sass:release', 'jade', 'imagemin', 'concat', 'jshint', 'uglify', 'copy:style', 'copy:jquery', 'copy:slideout']);
 };

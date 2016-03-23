@@ -66,6 +66,12 @@
             }, 1000);
         });
 
+        // Slide menu
+        var slideout = new Slideout({
+            'panel': $('#main').get(0),
+            'menu': $('#menu').get(0)
+        });
+
         var timeout;
         var $contacts = $('#front-page').find('li');
         $contacts.hover(function() {
@@ -92,7 +98,7 @@
             }, 3000);
         });
 
-        var $sections = $('body').find('> section');
+        var $sections = $('#main').find('> section');
         $sections.eq($sections.size()-1).css({
             'padding-bottom' : windowScrollCoeficient * $window.height()
         });
@@ -133,10 +139,4 @@
         }
     });
 })(jQuery);
-
-
-
-
-
-
 
