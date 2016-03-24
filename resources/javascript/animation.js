@@ -66,12 +66,6 @@
             }, 1000);
         });
 
-        // Slide menu
-        var slideout = new Slideout({
-            'panel': $('#main').get(0),
-            'menu': $('#menu').get(0)
-        });
-
         var timeout;
         var $contacts = $('#front-page').find('li');
         $contacts.hover(function() {

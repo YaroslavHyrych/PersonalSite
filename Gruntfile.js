@@ -9,8 +9,8 @@ module.exports = function(grunt) {
         concat: {
             js: {
                 src: [
-                    '<%= js_folder %>/animation.js',
-                    '<%= js_folder %>/sources.js'
+                    '<%= js_folder %>/*.js',
+                    '!<%= js_folder %>/app.js'
                 ],
                 dest: '<%= js_folder%>/app.js'
             }
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
             },
             script: {
                 files: ['<%= js_folder %>/**/*.js'],
-                tasks: ['concat:js', 'uglify'],
+                tasks: ['concat:js', 'copy:debug'],
                 options: {
                     spawn: false
                 }
@@ -120,6 +120,17 @@ module.exports = function(grunt) {
                     cwd: 'bower_components/slideout.js/dist/',
                     src: 'slideout.js',
                     dest: '<%= target_folder %>/js'
+                }]
+            },
+            debug: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= js_folder %>',
+                    src: 'app.js',
+                    dest: '<%= target_folder %>/js/',
+                    rename: function(dest, src) {
+                        return dest + src.replace('.js','.min.js');
+                    }
                 }]
             }
         }
