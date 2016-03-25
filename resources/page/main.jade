@@ -11,23 +11,60 @@ html(lang="en")
         script(src="js/slideout.js")
         script(src="js/app.min.js")
     include ./mixins/mixin
+
+    -
+        var contacts = [
+            {'class': 'contact-linkedin', 'title': 'Link to profile', 'url': 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic'},
+            {'class': 'contact-instagram', 'title': 'Link to profile', 'url': 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic'},
+            {'class': 'contact-skype', 'title': 'toorist3'}
+        ];
+
+        var projects = [
+            { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'first', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+            { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'second shadow', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+            { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'third inset-shadow', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+            { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'fourth', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
+        ];
+
+        var skills = [
+            { 'name': 'Java',  'img': 'img/java.gif'},
+            { 'name': 'HTML5 & CSS3',  'img': 'img/htmlcss.gif'},
+            { 'name': 'JavaScript',  'img': 'img/js.gif'},
+            { 'name': 'GWT',  'img': 'img/gwt.gif'},
+            { 'name': 'jQuery',  'img': 'img/jquery.gif'},
+            { 'name': 'SASS',  'img': 'img/sass.gif'},
+            { 'name': 'Bootstrap',  'img': 'img/bootstrap.gif'},
+            { 'name': 'Grunt',  'img': 'img/grunt.gif'},
+            { 'name': 'Jade',  'img': 'img/jade.gif'}
+        ];
+
     body
-        nav#menu
-            div
-                h1
-                    | lol
+        aside#menu
+            h2 MENU
+
+            section.container
+                h3 MY PROJECTS
+
+                each project in projects
+                    a(href= project.url).row
+                        .u-pull-left
+                            img(src= project.img)
+                        .name=  project.name
+
+            section.container
+                h3 WORK WITH
+
+                each skill in skills
+                    .row
+                        .u-pull-left
+                            img(src= skill.img)
+                        .name=  skill.name
 
         main#main
             section.u-full-width#front-page
                 header.u-full-width
                     nav.container.row
                         ul.twelve.columns
-                            -
-                                var contacts = [
-                                    {'class': 'contact-linkedin', 'title': 'Link to profile', 'url': 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic'},
-                                    {'class': 'contact-instagram', 'title': 'Link to profile', 'url': 'https://www.linkedin.com/profile/view?id=AAIAABj1qTUBAn0U_IBuddZV_vyPe_lXSMsfM3g&trk=nav_responsive_tab_profile_pic'},
-                                    {'class': 'contact-skype', 'title': 'toorist3'}
-                                ];
                             each contact in contacts
                                 + contact(contact)
                 .container#my-name
@@ -40,14 +77,6 @@ html(lang="en")
 
                 header.container
                     h1 MY PROJECTS
-
-                -
-                    var projects = [
-                        { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'first', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-                        { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'second shadow', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-                        { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'third inset-shadow', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-                        { 'name': 'Some program',  'img': 'img/project_1.png', 'class': 'fourth', 'url': '#', 'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
-                    ];
 
                 each project in projects
                     + project(project)
