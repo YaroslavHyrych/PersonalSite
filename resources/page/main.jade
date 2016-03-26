@@ -6,10 +6,14 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1")
         link(href="css/skeleton.css", rel="stylesheet")
         link(href="css/normalize.css", rel="stylesheet")
+        link(href="css/jquery.jscrollpane.css", rel="stylesheet")
         link(href="css/style.css", rel="stylesheet")
         script(src="js/jquery.min.js")
+        script(src="js/jquery.mousewheel.js")
+        script(src="js/jquery.jscrollpane.min.js")
         script(src="js/slideout.js")
         script(src="js/app.min.js")
+
     include ./mixins/mixin
 
     -
@@ -100,6 +104,7 @@ html(lang="en")
 
         #menu-btn
             span.line_0
+            span.line_1
             span.line_1
             span.line_2
 

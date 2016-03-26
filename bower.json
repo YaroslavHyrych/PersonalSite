@@ -15,6 +15,7 @@
   "dependencies": {
     "jquery": "git://github.com/jquery/jquery.git#^2.2.2",
     "skeleton": "2.0.4",
-    "slideout.js": "https://github.com/mango/slideout.git#^0.1.12"
+    "slideout.js": "https://github.com/mango/slideout.git#^0.1.12",
+    "jScrollPane": "jscrollpane#^2.0.23"
   }
 }

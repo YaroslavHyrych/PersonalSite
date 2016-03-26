@@ -1,8 +1,19 @@
 (function($) {
     $('document').ready(function() {
+        var $window = $(window);
+        var $menu = $('#menu');
+        var $main = $('#main');
+
+        $window.on('resize', resizeScroll);
+        
+        $menu.css({
+            'overflow': 'auto',
+            'height': $window.height()
+        }).jScrollPane();
+
         var slideout = new Slideout({
-            'panel': $('#main').get(0),
-            'menu': $('#menu').get(0),
+            'panel': $main.get(0),
+            'menu': $menu.get(0),
             'padding': 300
         });
 
@@ -29,43 +40,53 @@
             closeMenu($menuSpans, transition);
         });
 
-        function openMenu($menuSpans, transition) {
-            var $span_1 = $($menuSpans.get(1));
-            $span_1.css({
-                'opacity': 0,
-                'transition': transition
-            });
-            var $span_0 = $($menuSpans.get(0));
-            $span_0.css({
-                'transform': 'rotate(45deg)',
-                'top': $span_1.css('top'),
-                'transition': transition
-            });
-            var $span_2 = $($menuSpans.get(2));
-            $span_2.css({
-                'transform': 'rotate(-45deg)',
-                'top': $span_1.css('top'),
-                'transition': transition
-            });
+        function resizeScroll() {
+            $menu.css('height', $window.height());
         }
     });
 
-    function closeMenu($menuSpans, transition) {
+    function openMenu($menuSpans, transition) {
         var $span_1 = $($menuSpans.get(1));
         $span_1.css({
-            'opacity': 1,
+            'transform': 'rotate(45deg)',
+            'transition': transition
+        });
+        var $span_2 = $($menuSpans.get(2));
+        $span_2.css({
+            'transform': 'rotate(-45deg)',
             'transition': transition
         });
         var $span_0 = $($menuSpans.get(0));
         $span_0.css({
+            'opacity': 0,
+            'transition': transition
+        });
+        var $span_3 = $($menuSpans.get(3));
+        $span_3.css({
+            'opacity': 0,
+            'transition': transition
+        });
+    }
+
+    function closeMenu($menuSpans, transition) {
+        var $span_1 = $($menuSpans.get(1));
+        $span_1.css({
             'transform': 'rotate(0)',
-            'top': 0,
             'transition': transition
         });
         var $span_2 = $($menuSpans.get(2));
         $span_2.css({
             'transform': 'rotate(0)',
-            'top': parseInt($span_1.css('top')) * 2 + 'px',
+            'transition': transition
+        });
+        var $span_0 = $($menuSpans.get(0));
+        $span_0.css({
+            'opacity': 1,
+            'transition': transition
+        });
+        var $span_3 = $($menuSpans.get(3));
+        $span_3.css({
+            'opacity': 1,
             'transition': transition
         });
     }
