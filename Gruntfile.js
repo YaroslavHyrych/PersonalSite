@@ -122,6 +122,22 @@ module.exports = function(grunt) {
                     dest: '<%= target_folder %>/js'
                 }]
             },
+            jscrollpane: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components/jScrollPane/script/',
+                    src: ['jquery.jscrollpane.min.js', 'jquery.mousewheel.js'],
+                    dest: '<%= target_folder %>/js'
+                }]
+            },
+            jscrollpanecss: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components/jScrollPane/style/',
+                    src: 'jquery.jscrollpane.css',
+                    dest: '<%= target_folder %>/css'
+                }]
+            },
             debug: {
                 files: [{
                     expand: true,
@@ -145,5 +161,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
 
-    grunt.registerTask('default', ['sass:release', 'jade', 'imagemin', 'concat', 'jshint', 'uglify', 'copy:style', 'copy:jquery', 'copy:slideout']);
+    grunt.registerTask('default', ['sass:release', 'jade', 'imagemin', 'concat', 'jshint', 'uglify', 'copy:style', 'copy:jquery', 'copy:slideout', 'copy:jscrollpane', 'copy:jscrollpanecss']);
 };
