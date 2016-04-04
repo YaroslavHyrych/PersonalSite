@@ -1,7 +1,7 @@
 (function($) {
     var $window = $(window);
     var $document = $(document);
-    var windowScrollCoeficient = 0.2;
+    var windowScrollCoefficient = 0.2;
 
     function rebuildFrontPage() {
         var width = $window.width();
@@ -29,20 +29,20 @@
 
         var pcPosY = wScroll /2;
 
-        $('#pc').css({
+        $('#device').css({
             'transform' : 'translate(0px, -'+ pcPosY + 'px)'
         });
 
-        var phonePosY = wScroll /4;
-        $('.phone').css({
-            'transform' : 'translate(0px, -'+ phonePosY + 'px)'
-        });
+        // var phonePosY = wScroll /4;
+        // $('.phone').css({
+        //     'transform' : 'translate(0px, -'+ phonePosY + 'px)'
+        // });
 
         var $projects = $('article .container, #skills img');
         $projects.each(function(i) {
             var $project = $projects.eq(i);
             var height = $window.height();
-            var slide = height * windowScrollCoeficient;
+            var slide = height * windowScrollCoefficient;
             if (wScroll + height - slide > $project.offset().top) {
                 $project.addClass('isShowing');
             }
@@ -94,7 +94,7 @@
 
         var $sections = $('#main').find('> section');
         $sections.eq($sections.size()-1).css({
-            'padding-bottom' : windowScrollCoeficient * $window.height()
+            'padding-bottom' : windowScrollCoefficient * $window.height()
         });
 
         function showTooltip(element) {
