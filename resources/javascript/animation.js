@@ -3,6 +3,10 @@
     var $document = $(document);
     var windowScrollCoefficient = 0.2;
 
+    function rebuild() {
+        rebuildFrontPage();
+    }
+    
     function rebuildFrontPage() {
         var width = $window.width();
         var height = $window.height();
@@ -50,10 +54,10 @@
 
     });
 
-    $window.on('resize orientationchange', rebuildFrontPage);
+    $window.on('resize orientationchange', rebuild);
 
     $document.ready(function() {
-        var $popup = $('#popup');
+        var $tooltip = $('#tooltip');
 
         rebuildFrontPage();
 
@@ -101,30 +105,30 @@
             var $elem = $(element);
             var text = $elem.find('div').attr('text');
 
-            $popup.removeAttr('style');
-            $popup.text(text);
+            $tooltip.removeAttr('style');
+            $tooltip.text(text);
 
             var top = $elem.offset().top + $elem.innerHeight() + 10;
-            var left = $elem.offset().left - $popup.innerWidth() /2;
-            var width = ($popup.innerWidth() > $window.width()) ? window.width() : $popup.width();
+            var left = $elem.offset().left - $tooltip.innerWidth() /2;
+            var width = ($tooltip.innerWidth() > $window.width()) ? window.width() : $tooltip.width();
 
-            if (left + $popup.innerWidth() > $window.width()) {//TODO fix full width
-                left = $elem.offset().left + $elem.width() - $popup.innerWidth();
+            if (left + $tooltip.innerWidth() > $window.width()) {//TODO fix full width
+                left = $elem.offset().left + $elem.width() - $tooltip.innerWidth();
             }
 
-            $popup.css({
+            $tooltip.css({
                 top : top,
                 left: left,
                 width: width
             });
 
             $elem.addClass('hover');
-            $popup.stop().show();
+            $tooltip.stop().show();
         }
 
         function hideTooltip(element) {
             $(element).removeClass('hover');
-            $popup.stop().hide();
+            $tooltip.stop().hide();
         }
 
         //TOTO change orientation

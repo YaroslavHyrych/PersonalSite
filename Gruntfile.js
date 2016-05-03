@@ -1,11 +1,12 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        js_folder: 'resources/javascript',
-        sass_folder: 'resources/stylesheet',
-        images_folder: 'resources/images',
-        jade_folder: 'resources/page',
-        target_folder: 'webapp',
+        libs_folder:    'bower_components',
+        js_folder:      'resources/javascript',
+        sass_folder:    'resources/stylesheet',
+        images_folder:  'resources/images',
+        jade_folder:    'resources/page',
+        target_folder:  'webapp',
         concat: {
             js: {
                 src: [
@@ -13,13 +14,43 @@ module.exports = function(grunt) {
                     '!<%= js_folder %>/app.js'
                 ],
                 dest: '<%= js_folder%>/app.js'
+            },
+            libs_css: {
+                src: [
+                    '<%= libs_folder%>/skeleton/css/skeleton.css',
+                    '<%= libs_folder%>/skeleton/css/normalize.css',
+                    '<%= libs_folder%>/magnific-popup/dist/magnific-popup.css',
+                    '<%= libs_folder%>/jScrollPane/style/jquery.jscrollpane.css'
+                ],
+                dest: '<%= libs_folder%>/libs.css'
+            },
+            libs_js: {
+                src: [
+                    '<%= libs_folder%>/jquery/dist/jquery.min.js',
+                    '<%= libs_folder%>/slideout.js/dist/slideout.min.js',
+                    '<%= libs_folder%>/jScrollPane/script/jquery.jscrollpane.min.js',
+                    '<%= libs_folder%>/jScrollPane/script/jquery.mousewheel.js',
+                    '<%= libs_folder%>/magnific-popup/dist/jquery.magnific-popup.min.js'
+                ],
+                dest: '<%= target_folder%>/js/libs.min.js'
             }
         },
         uglify: {
-            build: {
+            release: {
                 src: '<%= js_folder %>/app.js',
                 dest: '<%= target_folder %>/js/app.min.js'
             }
+        },
+        cssmin: {
+            release: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= libs_folder%>',
+                    src: 'libs.css',
+                    dest: '<%= target_folder%>/css',
+                    ext: '.min.css'
+                }]
+            } 
         },
         imagemin: {
             dynamic: {
@@ -32,7 +63,7 @@ module.exports = function(grunt) {
             }
         },
         sass: {
-            debug: {
+            dev: {
                 options: {
                     style: 'nested'
                 },
@@ -98,47 +129,7 @@ module.exports = function(grunt) {
             }
         },
         copy: {
-            style: {
-                files: [{
-                    expand: true,
-                    cwd: 'bower_components/skeleton/css/',
-                    src: '*.css',
-                    dest: '<%= target_folder %>/css'
-                }]
-            },
-            jquery: {
-                files: [{
-                    expand: true,
-                    cwd: 'bower_components/jquery/dist/',
-                    src: 'jquery.min.js',
-                    dest: '<%= target_folder %>/js'
-                }]
-            },
-            slideout: {
-                files: [{
-                    expand: true,
-                    cwd: 'bower_components/slideout.js/dist/',
-                    src: 'slideout.js',
-                    dest: '<%= target_folder %>/js'
-                }]
-            },
-            jscrollpane: {
-                files: [{
-                    expand: true,
-                    cwd: 'bower_components/jScrollPane/script/',
-                    src: ['jquery.jscrollpane.min.js', 'jquery.mousewheel.js'],
-                    dest: '<%= target_folder %>/js'
-                }]
-            },
-            jscrollpanecss: {
-                files: [{
-                    expand: true,
-                    cwd: 'bower_components/jScrollPane/style/',
-                    src: 'jquery.jscrollpane.css',
-                    dest: '<%= target_folder %>/css'
-                }]
-            },
-            debug: {
+            dev_js: {
                 files: [{
                     expand: true,
                     cwd: '<%= js_folder %>',
@@ -146,6 +137,17 @@ module.exports = function(grunt) {
                     dest: '<%= target_folder %>/js/',
                     rename: function(dest, src) {
                         return dest + src.replace('.js','.min.js');
+                    }
+                }]
+            },
+            dev_css: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= libs_folder%>',
+                    src: 'libs.css',
+                    dest: '<%= target_folder %>/css/',
+                    rename: function(dest, src) {
+                        return dest + src.replace('.css','.min.css');
                     }
                 }]
             }
@@ -160,6 +162,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['sass:release', 'jade', 'imagemin', 'concat', 'jshint', 'uglify', 'copy:style', 'copy:jquery', 'copy:slideout', 'copy:jscrollpane', 'copy:jscrollpanecss']);
+    grunt.registerTask('build', ['sass:release', 'jade', 'imagemin', 'concat', 'jshint']);
+    grunt.registerTask('dev', ['build', 'copy:dev_js', 'copy:dev_css', 'watch']);
+    grunt.registerTask('release', ['build', 'uglify', 'cssmin']);
 };

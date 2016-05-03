@@ -1,6 +1,6 @@
 {
-  "name": "mysite",
-  "description": "My personal site",
+  "name": "hyrych.com",
+  "description": "Yaroslav Hyrych personal site",
   "main": "",
   "license": "MIT",
   "moduleType": [],
@@ -16,6 +16,7 @@
     "jquery": "git://github.com/jquery/jquery.git#^2.2.2",
     "skeleton": "2.0.4",
     "slideout.js": "https://github.com/mango/slideout.git#^0.1.12",
-    "jScrollPane": "jscrollpane#^2.0.23"
+    "jScrollPane": "jscrollpane#^2.0.23",
+    "magnific-popup": "^1.1.0"
   }
 }
