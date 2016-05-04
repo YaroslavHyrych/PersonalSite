@@ -37,11 +37,6 @@
             'transform' : 'translate(0px, -'+ pcPosY + 'px)'
         });
 
-        // var phonePosY = wScroll /4;
-        // $('.phone').css({
-        //     'transform' : 'translate(0px, -'+ phonePosY + 'px)'
-        // });
-
         var $projects = $('article .container, #skills img');
         $projects.each(function(i) {
             var $project = $projects.eq(i);
@@ -54,7 +49,7 @@
 
     });
 
-    $window.on('resize orientationchange', rebuild);
+    $window.on('resize orientationchange', rebuildFrontPage);
 
     $document.ready(function() {
         var $tooltip = $('#tooltip');

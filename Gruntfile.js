@@ -96,16 +96,16 @@ module.exports = function(grunt) {
             options: {
                 livereload: true
             },
-            script: {
+            js: {
                 files: ['<%= js_folder %>/**/*.js'],
-                tasks: ['concat:js', 'copy:debug'],
+                tasks: ['concat:js', 'copy:dev_js'],
                 options: {
                     spawn: false
                 }
             },
             css: {
                 files: '<%= sass_folder %>/**/*.sass',
-                tasks: ['sass:debug'],
+                tasks: ['sass:dev'],
                 options: {
                     spawn: false
                 }

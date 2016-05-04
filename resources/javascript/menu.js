@@ -4,12 +4,9 @@
         var $menu = $('#menu');
         var $main = $('#main');
 
-        $window.on('resize', resizeScroll);
-        
-        $menu.css({
-            'overflow': 'auto',
-            'height': $window.height()
-        }).jScrollPane();
+        $window.on('resize orientationchange', initMenu);
+
+        initMenu();
 
         var slideout = new Slideout({
             'panel': $main.get(0),
@@ -40,8 +37,15 @@
             closeMenu($menuSpans, transition);
         });
 
-        function resizeScroll() {
-            $menu.css('height', $window.height());
+        function initMenu() {
+            console.log('Init menu. Height ' + $window.height());
+            $menu.css({
+                'overflow': 'auto',
+                'height': $window.height(),
+                'display': 'block'
+            }).jScrollPane();
+
+            $menu.css('display', '');
         }
     });
 
