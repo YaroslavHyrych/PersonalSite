@@ -17,6 +17,14 @@ mixin project(project)
                     a(href= project.url, target="_blank")
                         .button VIEW DETAILS
 
-mixin skill(img)
-    .four.columns
-        img(src=img)
+
+mixin skillrow(language)
+    article(class='u-full-width #{language.class}')
+        .container
+            .four.columns.project-logo
+                div(class='#{language.img}')
+            .eight.columns
+                header
+                    h1= language.name
+                each lib in language.libs
+                    div(class='#{lib.img}', title='#{lib.name}')

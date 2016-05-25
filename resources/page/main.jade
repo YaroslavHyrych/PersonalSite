@@ -26,15 +26,11 @@ html(lang="en")
         ];
 
         var skills = [
-            { 'name': 'Java',  'img': 'img/java.gif'},
-            { 'name': 'HTML5 & CSS3',  'img': 'img/htmlcss.gif'},
-            { 'name': 'JavaScript',  'img': 'img/js.gif'},
-            { 'name': 'GWT',  'img': 'img/gwt.gif'},
-            { 'name': 'jQuery',  'img': 'img/jquery.gif'},
-            { 'name': 'SASS',  'img': 'img/sass.gif'},
-            { 'name': 'Bootstrap',  'img': 'img/bootstrap.gif'},
-            { 'name': 'Grunt',  'img': 'img/grunt.gif'},
-            { 'name': 'Jade',  'img': 'img/jade.gif'}
+            { 'name': 'Java', 'img': 'java-ico', 'class': 'java', 'libs': [
+                { 'name': 'Spring', 'img': 'spring-ico'},
+                { 'name': 'Hibernate', 'img': 'hibernate-ico'},
+                { 'name': 'GWT', 'img': 'gwt-ico'}]
+            }
         ];
 
     body
@@ -84,18 +80,8 @@ html(lang="en")
                 header.container
                     h1 WORK WITH
 
-                .container.row
-                    + skill('img/java.gif')
-                    + skill('img/htmlcss.gif')
-                    + skill('img/js.gif')
-                .container.row
-                    + skill('img/gwt.gif')
-                    + skill('img/jquery.gif')
-                    + skill('img/sass.gif')
-                .container.row
-                    + skill('img/bootstrap.gif')
-                    + skill('img/grunt.gif')
-                    + skill('img/jade.gif')
+                each skill in skillsrow
+                    + skillrow(skill)
 
         #menu-btn
             span.line_0
