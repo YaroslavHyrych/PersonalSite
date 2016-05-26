@@ -51,9 +51,12 @@ html(lang="en")
 
                 each skill in skills
                     .row
-                        .u-pull-left
-                            img(src= skill.img)
-                        .name=  skill.name
+                        h3= skill.name
+                    each lib in skill.libs
+                        .row
+                            .u-pull-left
+                                div(class='#{lib.img}', title='#{lib.name}')
+                            h4.name=  lib.name
 
         main#main
             section.u-full-width#front-page
@@ -80,7 +83,7 @@ html(lang="en")
                 header.container
                     h1 WORK WITH
 
-                each skill in skillsrow
+                each skill in skills
                     + skillrow(skill)
 
         #menu-btn
