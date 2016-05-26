@@ -8,6 +8,7 @@
 @import "partials/projects"
 @import "partials/skills"
 @import "partials/frontpage"
+@import "partials/icons"
 
 body
   font-family: $font-family
@@ -126,9 +127,8 @@ article > .container, #skills img
     margin-left: 70px
     padding-top: 10px
 
-  .gwt-ico, .hibernate-ico, .spring-ico
+  [class*=-ico]
     padding: 10px
-    background: #fff
     border-radius: 10em
     width: 40px
     height: 40px
@@ -136,17 +136,6 @@ article > .container, #skills img
     background-size: 40px
     background-repeat: no-repeat
 
-  .java-ico
-    background-image: $java-ico
-
-  .gwt-ico
-    background-image: $gwt-ico
-
-  .spring-ico
-    background-image: $spring-ico
-
-  .hibernate-ico
-    background-image: $hibernate-ico
 
 #menu-btn
   position: fixed
