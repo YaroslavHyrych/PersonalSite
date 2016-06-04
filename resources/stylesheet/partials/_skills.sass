@@ -15,12 +15,61 @@
   article > .container
     margin-bottom: 3rem
 
+  .skill-logo
+    margin-top: 3rem
+
+    @include respond-to-landscape(phablet)
+      margin-top: 0
+    @include respond-to-portrait(phablet)
+      margin-top: 0
+
+    & > [class*=-ico]
+      width: 290px
+      height: 290px
+      background-size: 290px 290px
+      background-repeat: no-repeat
+      //background-position-x: 24px
+
+      @include respond-to-landscape(tablet)
+        width: 140px
+        height: 290px
+        background-size: 140px auto
+        background-repeat: no-repeat
+      @include respond-to-landscape(phablet)
+        width: 140px
+        height: 290px
+        background-size: 140px auto
+        background-repeat: no-repeat
+
   .libs
     margin-top: 3rem
+
+    @include respond-to-portrait(phone)
+      margin-top: 0
+    @include respond-to-portrait(phablet)
+      margin-top: 0
+
+    @include respond-to-landscape(phablet)
+      margin-top: 0
+
 
   .lib
     display: inline-block
     margin-right: 30px
+
+    @include respond-to-portrait(phone)
+      margin-right: 0
+      margin-bottom: 4rem
+      display: block
+    @include respond-to-portrait(phablet)
+      margin-right: 0
+      margin-bottom: 4rem
+      display: block
+
+
+    @include respond-to-landscape(phablet)
+      margin-right: 0
+      margin-bottom: 4rem
 
     h5
       padding-top: 130px
@@ -28,14 +77,16 @@
       width: 100%
       text-align: center
 
+      @include respond-to-portrait(phone)
+        padding-top: 110px
+      @include respond-to-portrait(phablet)
+        padding-top: 110px
+
+      @include respond-to-landscape(phablet)
+        padding-top: 110px
+
   .java
     background: #3F3F3F
-
-  [class*=-ico]
-    width: 290px
-    height: 290px
-    background-size: 290px 290px
-    background-repeat: no-repeat
 
   .lib [class*=-ico]
     padding: 20px
@@ -45,3 +96,8 @@
     background-position: 20px 18px
     background-size: 100px 100px
     background-repeat: no-repeat
+
+    @include respond-to-portrait(phone)
+      margin: 0 auto
+    @include respond-to-portrait(phablet)
+      margin: 0 auto

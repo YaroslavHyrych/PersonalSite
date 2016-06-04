@@ -7,7 +7,7 @@ mixin contact(contact)
 mixin project(project)
     article(class='u-full-width #{project.class}')
         .container
-            .four.columns.project-lo
+            .four.columns.project-logo
                 img(src= project.img)
             .eight.columns
                 header
@@ -21,7 +21,7 @@ mixin project(project)
 mixin skillrow(language)
     article(class='u-full-width #{language.class}')
         .container
-            .four.columns
+            .four.columns.skill-logo
                 div(class='#{language.img}')
             .eight.columns.libs
                 each lib in language.libs
