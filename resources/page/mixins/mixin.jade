@@ -21,9 +21,9 @@ mixin project(project)
 mixin skillrow(language)
     article(class='u-full-width #{language.class}')
         .container
-            .four.columns.skill-logo
-                div(class='#{language.img}')
-            .eight.columns.libs
+            .twelve.columns.libs
+                h1.lang-name= language.name
+
                 each lib in language.libs
                     .lib
                         div(class='#{lib.img}', title='#{lib.name}')

@@ -15,6 +15,9 @@
   article > .container
     margin-bottom: 3rem
 
+  h1
+    color: #ffffff
+
   .skill-logo
     margin-top: 3rem
 
@@ -42,34 +45,41 @@
         background-repeat: no-repeat
 
   .libs
-    margin-top: 3rem
-
-    @include respond-to-portrait(phone)
-      margin-top: 0
-    @include respond-to-portrait(phablet)
-      margin-top: 0
-
-    @include respond-to-landscape(phablet)
-      margin-top: 0
-
+    text-align: center
 
   .lib
     display: inline-block
     margin-right: 30px
+    //background: #FFFFFF
+    //border-radius: 10px
 
     @include respond-to-portrait(phone)
       margin-right: 0
       margin-bottom: 4rem
       display: block
+
     @include respond-to-portrait(phablet)
       margin-right: 0
       margin-bottom: 4rem
       display: block
 
-
     @include respond-to-landscape(phablet)
-      margin-right: 0
+      margin-right: 10px
       margin-bottom: 4rem
+
+    [class*=-ico]
+      padding: 20px
+      border-radius: 10em
+      width: 100px
+      height: 160px
+      background-position: 20px 18px
+      background-size: 100px 100px
+      background-repeat: no-repeat
+
+      @include respond-to-portrait(phone)
+        margin: 0 auto
+      @include respond-to-portrait(phablet)
+        margin: 0 auto
 
     h5
       padding-top: 130px
@@ -79,25 +89,19 @@
 
       @include respond-to-portrait(phone)
         padding-top: 110px
+        font-size: 3rem
+
+      @include respond-to-landscape(phone)
+        padding-top: 110px
+        font-size: 3rem
+
       @include respond-to-portrait(phablet)
         padding-top: 110px
+        font-size: 3rem
 
       @include respond-to-landscape(phablet)
         padding-top: 110px
+        font-size: 3rem
 
   .java
     background: #3F3F3F
-
-  .lib [class*=-ico]
-    padding: 20px
-    border-radius: 10em
-    width: 100px
-    height: 100px
-    background-position: 20px 18px
-    background-size: 100px 100px
-    background-repeat: no-repeat
-
-    @include respond-to-portrait(phone)
-      margin: 0 auto
-    @include respond-to-portrait(phablet)
-      margin: 0 auto

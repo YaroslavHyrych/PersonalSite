@@ -9,6 +9,7 @@
 @import "partials/skills"
 @import "partials/frontpage"
 @import "partials/icons"
+@import "partials/hooks"
 
 body
   font-family: $font-family
@@ -19,6 +20,15 @@ body
 
 h1
   font-size: 6rem
+
+  @include respond-to-portrait(phone)
+    font-size: 4rem
+
+  @include respond-to-portrait(phablet)
+    font-size: 4rem
+
+  //@include respond-to-portrait(medium-screens)
+  //  font-size: 4rem
 
 .inset-shadow
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5)
@@ -52,15 +62,6 @@ section.content
     h1
       margin: 0
       padding: 0.67em 0
-
-      @include respond-to-portrait(phone)
-        font-size: 4rem
-
-      @include respond-to-portrait(phablet)
-        font-size: 4rem
-
-      //@include respond-to-portrait(medium-screens)
-      //  font-size: 4rem
 
   article
     padding: 2rem 0

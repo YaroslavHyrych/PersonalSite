@@ -7,7 +7,7 @@
     repeat: no-repeat
     size: 30px
 
-@mixin project($text-color, $background-color, $background-image: null)
+@mixin project($color, $background-color, $background-image: null)
   @if $background-image != null
     background:
       color: $background-color
@@ -17,14 +17,15 @@
   @else
     background-color: $background-color
 
-  color: $text-color
+  color: $color
 
   .button
-    color: $text-color
-    border-color: $text-color
+    color: $color
+    border-color: $color
 
     &:hover
-      border-color: #ccc
+      color: #fff
+      border-color: #fff
 
 $small: 320px
 $medium: 600px
